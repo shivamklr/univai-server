@@ -5,6 +5,9 @@ const router = Router();
 // POST /test
 router.post("/", createTest);
 
+// PATCH /test/question
+router.patch("/question", addQuestion);
+
 // GET /test
 router.get("/", getTest);
 module.exports = router;

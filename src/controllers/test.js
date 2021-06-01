@@ -20,3 +20,17 @@ module.exports.getTest = async (req, res) => {
         return res.status(500).json({ errors: error.message });
     }
 };
+module.exports.addQuestion = async (req, res) => {
+    // TODO: validate data
+    const { testId, title, choices } = req.body;
+    try {
+        const test = await Test.findOne({ _id: testId });
+        test.questions.push({ title, choices });
+        test.save((err) => {
+            if (err) throw err;
+        });
+        return res.status(201).json({ data: { test } });
+    } catch (error) {
+        return res.status(500).json({ errors: error.message });
+    }
+};
