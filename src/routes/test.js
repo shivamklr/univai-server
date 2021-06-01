@@ -5,4 +5,6 @@ const router = Router();
 // POST /test
 router.post("/", createTest);
 
+// GET /test
+router.get("/", getTest);
 module.exports = router;

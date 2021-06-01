@@ -9,3 +9,14 @@ module.exports.createTest = async (req, res) => {
         return res.status(500).json({ errors: e.message });
     }
 };
+module.exports.getTest = async (req, res) => {
+    // TODO: validate testId
+    const { testId } = req.query;
+    try {
+        const test = await Test.findById(testId);
+        if (!test) throw Error("Test does not exist");
+        return res.status(200).json({ data: { test } });
+    } catch (error) {
+        return res.status(500).json({ errors: error.message });
+    }
+};
