@@ -51,3 +51,14 @@ module.exports.addAnswer = async (req, res) => {
         return res.status(500).json({ errors: error.message });
     }
 };
+module.exports.getAllTests = async (req, res) => {
+    // console.log("hi1");
+    try {
+        const tests = await Test.find({})
+            .sort({ name: 0 })
+            .select("visibility _id name");
+        return res.status(200).json({ data: { tests } });
+    } catch (error) {
+        return res.status(500).json({ errors: error.message });
+    }
+};
