@@ -8,6 +8,9 @@ router.post("/", createTest);
 // PATCH /test/question
 router.patch("/question", addQuestion);
 
+// PATCH /test/question/answer
+router.patch("/question/answer", addAnswer);
+
 // GET /test
 router.get("/", getTest);
 module.exports = router;

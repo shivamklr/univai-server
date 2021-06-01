@@ -34,3 +34,20 @@ module.exports.addQuestion = async (req, res) => {
         return res.status(500).json({ errors: error.message });
     }
 };
+module.exports.addAnswer = async (req, res) => {
+    // TODO: validate data
+    const { testId, questionId, answerId } = req.body;
+
+    try {
+        const test = await Test.findOne({ _id: testId });
+        const choice = test.questions.id(questionId).choices.id(answerId);
+        if (!choice) throw Error("Choice does not exist");
+        test.questions.id(questionId).answerId = answerId;
+        test.save((err) => {
+            if (err) throw err;
+        });
+        return res.status(201).json({ data: { test } });
+    } catch (error) {
+        return res.status(500).json({ errors: error.message });
+    }
+};
