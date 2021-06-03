@@ -1,7 +1,10 @@
 const Test = require("../models/Test");
+const { validateField } = require("../utils/validate");
 module.exports.createTest = async (req, res) => {
-    // TODO: validate name
     const { name } = req.body;
+    if (!validateField(name) || !(name.length <= 20)) {
+        return res.status(422).json({ message: "Validation Failed" });
+    }
     try {
         const test = await Test.create({ name });
         return res.status(201).json({ data: { test } });
@@ -10,8 +13,10 @@ module.exports.createTest = async (req, res) => {
     }
 };
 module.exports.getTest = async (req, res) => {
-    // TODO: validate testId
     const { testId } = req.query;
+    if (!validateField(testId)) {
+        return res.status(422).json({ message: "Validation Failed" });
+    }
     try {
         const test = await Test.findById(testId);
         if (!test) throw Error("Test does not exist");
@@ -21,8 +26,14 @@ module.exports.getTest = async (req, res) => {
     }
 };
 module.exports.addQuestion = async (req, res) => {
-    // TODO: validate data
     const { testId, title, choices } = req.body;
+    if (
+        !validateField(testId) ||
+        !validateField(title) ||
+        !validateField(choices)
+    ) {
+        return res.status(422).json({ message: "Validation Failed" });
+    }
     try {
         const test = await Test.findOne({ _id: testId });
         const questionsLength = test.questions.push({ title, choices });
@@ -37,9 +48,14 @@ module.exports.addQuestion = async (req, res) => {
     }
 };
 module.exports.addAnswer = async (req, res) => {
-    // TODO: validate data
     const { testId, questionId, answerId } = req.body;
-
+    if (
+        !validateField(testId) ||
+        !validateField(questionId) ||
+        !validateField(answerId)
+    ) {
+        return res.status(422).json({ message: "Validation Failed" });
+    }
     try {
         const test = await Test.findOne({ _id: testId });
         const choice = test.questions.id(questionId).choices.id(answerId);
@@ -48,11 +64,9 @@ module.exports.addAnswer = async (req, res) => {
         test.save((err) => {
             if (err) throw err;
         });
-        return res
-            .status(201)
-            .json({
-                data: { answerId: test.questions.id(questionId).answerId },
-            });
+        return res.status(201).json({
+            data: { answerId: test.questions.id(questionId).answerId },
+        });
     } catch (error) {
         return res.status(500).json({ errors: error.message });
     }
