@@ -27,11 +27,7 @@ module.exports.getTest = async (req, res) => {
 };
 module.exports.addQuestion = async (req, res) => {
     const { testId, title, choices } = req.body;
-    if (
-        !validateField(testId) ||
-        !validateField(title) ||
-        !validateField(choices)
-    ) {
+    if (!validateField(testId) || !validateField(title)) {
         return res.status(422).json({ message: "Validation Failed" });
     }
     try {
