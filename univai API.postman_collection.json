@@ -1,0 +1,474 @@
+{
+	"info": {
+		"_postman_id": "dcadf2e2-8941-42dc-b546-fb09975ace72",
+		"name": "univai API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Test",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"name\":\"good test\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/test",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Create Test",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\":\"good test\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/test",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"test"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "113"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"71-zq+ZflDDBWCExeAChAB/89KwBjo\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Jun 2021 22:45:50 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"test\": {\n            \"visibility\": false,\n            \"_id\": \"60b95b9d8eac24a0e235ce45\",\n            \"name\": \"good test\",\n            \"questions\": [],\n            \"__v\": 0\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get a test",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/test/?testId=60b61bc6590eabe42f26d45f",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test",
+						""
+					],
+					"query": [
+						{
+							"key": "testId",
+							"value": "60b61bc6590eabe42f26d45f"
+						}
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get a test",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/test/?testId=60b95b9d8eac24a0e235ce45",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"test",
+								""
+							],
+							"query": [
+								{
+									"key": "testId",
+									"value": "60b95b9d8eac24a0e235ce45"
+								}
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "375"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"177-njsNYjQJxDW673okimFFn4YlvUQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Jun 2021 22:46:37 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"test\": {\n            \"visibility\": false,\n            \"_id\": \"60b95b9d8eac24a0e235ce45\",\n            \"name\": \"good test\",\n            \"questions\": [\n                {\n                    \"_id\": \"60b95bbb8eac24a0e235ce46\",\n                    \"title\": \"Good question\",\n                    \"choices\": [\n                        {\n                            \"_id\": \"60b95bbb8eac24a0e235ce47\",\n                            \"choice\": \"X\"\n                        },\n                        {\n                            \"_id\": \"60b95bbb8eac24a0e235ce48\",\n                            \"choice\": \"Y\"\n                        },\n                        {\n                            \"_id\": \"60b95bbb8eac24a0e235ce49\",\n                            \"choice\": \"Z\"\n                        },\n                        {\n                            \"_id\": \"60b95bbb8eac24a0e235ce4a\",\n                            \"choice\": \"A\"\n                        }\n                    ]\n                }\n            ],\n            \"__v\": 1\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Get all tests",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/tests",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"tests"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Get all tests",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/tests",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"tests"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "369"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"171-K6QcYflHwR+i5B5bm4xKX9XRhnw\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Jun 2021 22:46:46 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"tests\": [\n            {\n                \"visibility\": false,\n                \"_id\": \"60b61bbb590eabe42f26d45e\",\n                \"name\": \"Test1\"\n            },\n            {\n                \"visibility\": false,\n                \"_id\": \"60b61bc6590eabe42f26d45f\",\n                \"name\": \"Test2\"\n            },\n            {\n                \"visibility\": false,\n                \"_id\": \"60b61bcb590eabe42f26d460\",\n                \"name\": \"Test3\"\n            },\n            {\n                \"visibility\": false,\n                \"_id\": \"60b958e6d7c78285646bce87\",\n                \"name\": \"Test4\"\n            },\n            {\n                \"visibility\": false,\n                \"_id\": \"60b95b9d8eac24a0e235ce45\",\n                \"name\": \"good test\"\n            }\n        ]\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add question",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"testId\": \"60b95b9d8eac24a0e235ce45\",\n    \"title\": \"Good question\",\n    \"choices\": [\n        {\"choice\":\"X\"},\n        {\"choice\":\"Y\"},\n        {\"choice\":\"Z\"},\n        {\"choice\":\"A\"}\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/test/question",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test",
+						"question"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add question",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"testId\": \"60b95b9d8eac24a0e235ce45\",\n    \"title\": \"Good question\",\n    \"choices\": [\n        {\"choice\":\"X\"},\n        {\"choice\":\"Y\"},\n        {\"choice\":\"Z\"},\n        {\"choice\":\"A\"}\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/test/question",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"test",
+								"question"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "284"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"11c-CtWWH8TRQge+EHlNNoR66KDb8oU\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Jun 2021 22:46:19 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"question\": {\n            \"_id\": \"60b95bbb8eac24a0e235ce46\",\n            \"title\": \"Good question\",\n            \"choices\": [\n                {\n                    \"_id\": \"60b95bbb8eac24a0e235ce47\",\n                    \"choice\": \"X\"\n                },\n                {\n                    \"_id\": \"60b95bbb8eac24a0e235ce48\",\n                    \"choice\": \"Y\"\n                },\n                {\n                    \"_id\": \"60b95bbb8eac24a0e235ce49\",\n                    \"choice\": \"Z\"\n                },\n                {\n                    \"_id\": \"60b95bbb8eac24a0e235ce4a\",\n                    \"choice\": \"A\"\n                }\n            ]\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "Add answer",
+			"request": {
+				"method": "PATCH",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"testId\": \"60b61bc6590eabe42f26d45f\",\n    \"questionId\": \"60b92a717b1a510f694e0ab6\",\n    \"answerId\":\"60b92a717b1a510f694e0ab8\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/test/question/answer",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"test",
+						"question",
+						"answer"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Add answer",
+					"originalRequest": {
+						"method": "PATCH",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"testId\": \"60b61bc6590eabe42f26d45f\",\n    \"questionId\": \"60b92a717b1a510f694e0ab6\",\n    \"answerId\":\"60b92a717b1a510f694e0ab8\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/test/question/answer",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"test",
+								"question",
+								"answer"
+							]
+						}
+					},
+					"status": "Created",
+					"code": 201,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "X-Powered-By",
+							"value": "Express"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json; charset=utf-8"
+						},
+						{
+							"key": "Content-Length",
+							"value": "48"
+						},
+						{
+							"key": "ETag",
+							"value": "W/\"30-oME8KrvAy4U7YE7ZBDhFrtJJAeQ\""
+						},
+						{
+							"key": "Date",
+							"value": "Thu, 03 Jun 2021 22:48:40 GMT"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=5"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"data\": {\n        \"answerId\": \"60b92a717b1a510f694e0ab8\"\n    }\n}"
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "http://localhost:4040"
+		}
+	]
+}
