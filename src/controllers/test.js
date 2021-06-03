@@ -58,11 +58,8 @@ module.exports.addAnswer = async (req, res) => {
     }
 };
 module.exports.getAllTests = async (req, res) => {
-    // console.log("hi1");
     try {
-        const tests = await Test.find({})
-            .sort({ name: 0 })
-            .select("visibility _id name");
+        const tests = await Test.find({}).select("visibility _id name");
         return res.status(200).json({ data: { tests } });
     } catch (error) {
         return res.status(500).json({ errors: error.message });
