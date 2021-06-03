@@ -48,7 +48,11 @@ module.exports.addAnswer = async (req, res) => {
         test.save((err) => {
             if (err) throw err;
         });
-        return res.status(201).json({ data: { test } });
+        return res
+            .status(201)
+            .json({
+                data: { answerId: test.questions.id(questionId).answerId },
+            });
     } catch (error) {
         return res.status(500).json({ errors: error.message });
     }
