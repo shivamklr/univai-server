@@ -25,11 +25,13 @@ module.exports.addQuestion = async (req, res) => {
     const { testId, title, choices } = req.body;
     try {
         const test = await Test.findOne({ _id: testId });
-        test.questions.push({ title, choices });
+        const questionsLength = test.questions.push({ title, choices });
         test.save((err) => {
             if (err) throw err;
         });
-        return res.status(201).json({ data: { test } });
+        return res
+            .status(201)
+            .json({ data: { question: test.questions[questionsLength - 1] } });
     } catch (error) {
         return res.status(500).json({ errors: error.message });
     }
